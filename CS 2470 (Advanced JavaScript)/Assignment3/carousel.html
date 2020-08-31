@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carousel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.js" type="text/javascript"></script>
+        <script src="jquery-cycle-all.js" type="text/javascript"></script>
+        <script src='bookInfo.js' type='text/javascript'></script>
+        <script type="text/javascript">
+            var html = '';
+            $(document).ready(function(){
+                $.getJSON('ReasonsIWasteTime.json', function(data){
+                    $.each(data, function(key, value){
+                       $.each(value, function(index, stuff){
+                           html += '<div>';
+                           html += '<h2 id="item">'+stuff.Item+'</h2>';
+                           html += '<p onclick="bookinfo('+stuff.id+')"><img src="'+stuff.Source+'" style="max-width:400px; max-height:300px"></div>';
+                       });
+                    });
+                    $('#box').html(html);
+                    $('#box').cycle({
+                        fx: 'fade',
+                        pause: '1',
+                        prev: '#prev',
+                        next: '#next',
+                        speed: 800,
+                        timeout: 1000
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <div id="main"><center><h3>Carousel that will display an image of the top six things I like to do.</h3></center></div>
+        <center><p>Click on the images to view a short descriptions of them.</p></center>
+
+        <div>
+            <table style='width: 500px;'>
+                <tr>
+                    <td><a href='#' id='prev'>Previous</a></td>
+                    <td style="width:300px; height: 300px;"><div id = "box"></div></td>
+                    <td><a href="#" id="next">Next</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><p id="information"></p></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

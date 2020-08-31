@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Fire Emblem Character Creator&apos;" deleteContents="true" description="Delete resource &apos;Fire Emblem Character Creator&apos;" element1="/Fire Emblem Character Creator" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1520556008648"/>&#x0A;<refactoring comment="Delete resource &apos;Face Assignment&apos;" deleteContents="false" description="Delete resource &apos;Face Assignment&apos;" element1="/Face Assignment" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1520654958576"/>
+</session>

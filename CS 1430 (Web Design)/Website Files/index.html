@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title> Aesthetic Flamenco </title>
+    <div class="container page-header">
+        <h1 align="center">Jp Otteson's Page</h1>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="./img/MadDab.jpg" alt="Moab">
+        </div>
+        <div class="item">
+          <img class="rotateimg270" src="./img/OceanView.jpg" alt="Bahamas">
+        </div>
+        <div class="item">
+          <img src="./img/FishEye.jpg" alt="Cold Day">
+        </div>
+        <div class="item">
+          <img src="./img/CuteCat.jpg" alt="Gotta Love Em">
+        </div>
+        <div class="item">
+          <img class="rotateimg90" src="./img/RumCake.jpg" alt="Bahamas Rum">
+        </div>
+        <div class="item">
+          <img src="./img/CarRide.jpg" alt="Normal Day">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div>
+      <h2 class="container page-header">Class Reflection</h2>
+      <div class="reflection">
+        <p>During my time in CS 1430 I learned a ton about how to create not
+          just from the perspective of a programer but visually and artistically
+           as well. I found a lot of interest in how I was able to manipulate
+           code to do what I wanted it to do in ways I had not thought of while
+           taking all my standard coding classes with Java, and began to find a
+           more artistic side to coding as I explored new and more creative ways
+           to finish assingments. I enjoyed how simple and entertaining it was
+           to code in HTML, having a language with simple rules really made for
+           more time for me to focus on more exciting elements like CSS and
+           JavaScript. With more lectures and more tools in my belt I began to
+           see the websites and other web-based programs with more interest and
+           would dig into them to see what kinds of code they had working behind
+           the screen. This led me to reach out to other professional website
+           designers to learn more about how I can expand my abilities and
+           further garner inspiration to develope better websites.</p>
+      </div>
+    </div>
+    <div class="container page-header">
+      <div class="container">
+        <h3>Project Links & EPortfolio</h3>
+    <button id="buttonMessage" onClick="myFunction(); toggleText(this.id);" data-toggle="collapse" data-target="#assignments">Display</button>
+        <div id="assignments" class="collapse">
+          <ul class="list-group">
+            <li class="col-sm-6"><a href="./image-map/index.html"    class="list-group-item">State of Utah Map</a></li>
+            <li class="col-sm-6"><a href="./pizza-1/index.html"      class="list-group-item">Pizza.Co Website</a></li>
+            <li class="col-sm-6"><a href="./little-boxes/index.html" class="list-group-item">Mario Boxes</a></li>
+            <li class="col-sm-6"><a href="./pizza-2/index.html"      class="list-group-item">Pizza. Co Website 2.0</a></li>
+            <li class="col-sm-6"><a href="./Midterm/index.html"      class="list-group-item">Midterm</a></li>
+            <li class="col-sm-6"><a href="./js-birthday/index.html"  class="list-group-item">Happy Birthday Program</a></li>
+            <li class="col-sm-6"><a href="./mad-lib/index.html"      class="list-group-item">Mad-Libs</a></li>
+            <li class="col-sm-6"><a href="./Lottery/index.html"      class="list-group-item">Lottery</a></li>
+            <li class="col-sm-6"><a href="./guess/index.html"        class="list-group-item">Guessing Game</a></li>
+            <li class="col-sm-6"><a href="./TicTacToe/index.html"    class="list-group-item">Tic Tac Toe</a></li>
+            <li class="col-sm-6"><a href="https://slcc.digication.com/jesus_otteson/Home/"   class="list-group-item">SLCC EPortfolio</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid text-center">
+      <div class="container">
+        <div style="text-align:center">
+          <h2>Contact Me</h2>
+        </div>
+        <button id="buttonMessage" onClick="myFunction(); toggleText(this.id);" data-toggle="collapse" data-target="#Contact">Display</button>
+        <div id="Contact" class="collapse">
+          <div class="row">
+            <div class="column">
+              <div id="map" style="width:100%;height:500px"></div>
+            </div>
+            <div class="column">
+              <form action="/action_page.php">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                  <option value="usa">USA</option>
+                  <option value="canada">Canada</option>
+                </select>
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function myMap() {
+        var myCenter = new google.maps.LatLng(40.760779,-111.891047);
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {center: myCenter, zoom: 12};
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker({position:myCenter});
+        marker.setMap(map);
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+    </footer>
+  </body>
+</html>

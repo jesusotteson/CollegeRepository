@@ -1,0 +1,39 @@
+{
+    "things": [{
+            "id": 1,
+            "Item": "Video Games",
+            "Source": "images/VideoGames.jpg",
+            "Desc": "I enjoy playing all types of video games, I mainly stick to JRPG's, crafting/survival, or strategy games as if I play competitive FPS games, my wife will laugh at how bad I am and then shoot me in game."
+        },
+        {
+            "id": 2,
+            "Item": "Petting My Cat",
+            "Source": "images/Cat.jpg",
+            "Desc": "I enjoy petting my cat as it is relaxing, sometimes it likes to purr, other times it likes to stab me with its needle mittens and then sink its teeth into my hand for maximum pain."
+        },
+        {
+            "id": 3,
+            "Item": "Watching TV",
+            "Source": "images/TV.jpg",
+            "Desc": "I like watching TV, however my wife does at times wonder why I watch what I do calling it cringy and very Japanese. She just doesn't understand I suppose."
+        },
+        {
+            "id": 4,
+            "Item": "Eating",
+            "Source": "images/Eating.jpg",
+            "Desc": "Sometimes my stomach cramps. In these times I like to consume food, it helps make the cramps go away."
+        },
+        {
+            "id":5,
+            "Item":"Sleeping",
+            "Source":"images/Sleeping.jpg",
+            "Desc":"Sleeping is a past time I hardly get to experience because my job doesn't allow me to sleep, neither does my school...or my brain for that matter."
+        },
+        {
+            "id":6,
+            "Item":"Playing my Guitar",
+            "Source":"images/Guitar.jpg",
+            "Desc":"I enjoy playing my guitar, it is relaxing and boosts my confidence when I accomplish something. My wife and the cats disagree though, they don't quite like when I play guitar."
+        }
+    ]
+}

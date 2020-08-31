@@ -1,0 +1,43 @@
+  body {
+    height: 100%;
+    margin: 20;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
+    background-color: #F5F5DC;
+    }
+  input, textarea {
+    font-size:20px;
+    color:#00FF00;
+    background-color: black;
+    width: 400px;
+    border: 10px solid red;
+    padding: 10px;
+    margin: 10px;
+    }
+  h1 {
+    font-size: 50px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    }
+  ul{
+    text-align: center;
+    }
+  ul li{
+    display: inline-block;
+  }
+  ul li a{
+    font-size: 25px;
+    color:red;
+    text-shadow: 2px 2px 5px #00ff00;
+    font-family: tahomal;
+    text-decoration: none;
+    display: block;
+    padding: 2px 5px;
+    }
+  ul li a:hover{
+    color: black;
+    }
+  a.Hometab{
+    text-decoration: underline;
+  }

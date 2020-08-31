@@ -1,0 +1,68 @@
+body
+{
+    background-color:#87ceeb;
+}
+div.box1
+{
+    background-color:black;
+    color:black;
+    border-style:groove;
+    border-color:black;
+    margin-left:-50px;
+    margin-top:-50px;
+    padding:5px;
+    height:10px;
+    width:250px;
+    position:fixed;
+    top:40%;
+    left:5%;
+    text-decoration-color: white;
+}
+
+div.floating-box
+{
+    float: right;
+    width: 150px;
+    height: 80px;
+    margin: 100px;
+    background-color: #996611;
+    border-top:solid #127C22 20px;
+}
+
+
+div.cloud
+{
+  padding: 10px;
+  margin: 50px;
+  float: left;
+  clear: right;
+  top: 50px;
+  position: relative;
+}
+
+#flag-box{
+  margin-left: 20px;
+  margin-top: -220px;
+}
+#picture{
+  position: fixed;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+#custom{
+    border:50px solid white;
+    border-radius: 40px 40px 40px 40px;
+    width: 50px;
+    height: 50px;
+    background-color:white;
+    margin-left: 100px;
+    margin-top: -50px;
+}
+#Goomba-box{
+  margin-left: 20px;
+  margin-top: -115px;
+}
+#Turtle-box{
+  margin-left: 20px;
+  margin-top: -115px;
+}

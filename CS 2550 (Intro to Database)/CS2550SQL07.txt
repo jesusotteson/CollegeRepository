@@ -1,0 +1,88 @@
+CS2550SQL07
+Jesus Otteson
+
+1.Alphabetically list the names of instructors who have never used projects (PJ) as a basis for grading in their courses.
+
+SELECT last_name, first_name
+FROM instructor
+WHERE instructor_id NOT IN(SELECT DISTINCT i.instructor_id
+			   FROM instructor i INNER JOIN section s
+			   ON i.instructor_id = s.instructor_id
+			   INNER JOIN grade_type_weight w
+			   ON s.section_id = w.section_id
+			   INNER JOIN grade g
+			   ON w.section_id = g.section_id AND w.grade_type_code = g.grade_type_code
+			   WHERE g.grade_type_code = 'PJ')
+ORDER BY last_name;
+
+2.Determine the number of students who received a below average grade on the final exam (FI) in section 86.
+
+SELECT COUNT(*) AS BELOW_AVERAGE
+FROM(SELECT COUNT(*) 
+     FROM student s 
+     INNER JOIN enrollment e
+     ON s.student_id = e.student_id
+     INNER JOIN grade g
+     ON e.student_id = g.student_id AND e.section_id = g.section_id
+     WHERE g.grade_type_code = 'FI' AND e.section_id = '86'
+     GROUP BY numeric_grade
+     HAVING numeric_grade < (SELECT AVG(numeric_grade) 
+			     FROM(SELECT s.student_id, numeric_grade
+				  FROM student s 
+				  INNER JOIN enrollment e
+				  ON s.student_id = e.student_id
+				  INNER JOIN grade g
+				  ON e.student_id = g.student_id AND e.section_id = g.section_id
+				  WHERE g.grade_type_code = 'FI' AND e.section_id = '86'
+				  GROUP BY s.student_id, numeric_grade)));
+
+3.List the city, state combination that has the highest number of students enrolled.
+
+SELECT city, state
+FROM zipcode z 
+     JOIN student s
+     ON s.zip = z.zip
+     JOIN enrollment e
+     ON e.student_id = s.student_id
+GROUP BY city, state
+HAVING count(*) = (SELECT max(highest)
+		   FROM(SELECT CITY, STATE, count(*) as highest 
+		   FROM zipcode z 
+            		JOIN student s
+			ON s.zip = z.zip
+            		JOIN enrollment e
+			ON e.student_id = s.student_id
+		   GROUP BY city,state));
+
+4.Provide the student_id, name and final exam grade of the student(s) that received the lowest score on the final exam (FI) in course section 81.
+
+SELECT s.STUDENT_ID, s.FIRST_NAME, s.LAST_NAME, g.NUMERIC_GRADE
+FROM STUDENT s, ENROLLMENT e, GRADE g, SECTION se
+WHERE s.STUDENT_ID = e.STUDENT_ID
+    AND e.STUDENT_ID = g.STUDENT_ID
+    AND e.SECTION_ID = g.SECTION_ID
+    AND se.SECTION_ID = e.SECTION_ID
+    AND g.GRADE_TYPE_CODE = 'FI'
+    AND se.SECTION_ID = '81'
+GROUP BY s.STUDENT_ID, s.LAST_NAME, s.FIRST_NAME, g.NUMERIC_GRADE
+HAVING g.NUMERIC_GRADE = (SELECT MIN(NUMERIC_GRADE)
+                            FROM (SELECT s.STUDENT_ID, s.LAST_NAME, s.FIRST_NAME, g.NUMERIC_GRADE
+                                  FROM STUDENT s, ENROLLMENT e, GRADE g, SECTION se
+                                  WHERE s.STUDENT_ID = e.STUDENT_ID       
+                                    AND e.STUDENT_ID = g.STUDENT_ID     
+                                    AND e.SECTION_ID = g.SECTION_ID   
+                                     AND se.SECTION_ID = e.SECTION_ID
+                                    AND g.GRADE_TYPE_CODE = 'FI'
+                                    AND se.SECTION_ID = '81'
+                                  GROUP BY s.STUDENT_ID, s.LAST_NAME, s.FIRST_NAME, g.NUMERIC_GRADE));
+
+5.List the student id and name of students who have taken the same course more than once.
+Order by Student ID.
+
+SELECT s.STUDENT_ID, s.LAST_NAME, s.FIRST_NAME
+FROM STUDENT s, ENROLLMENT e, SECTION se
+WHERE s.STUDENT_ID = e.STUDENT_ID
+	AND e.SECTION_ID = se.SECTION_ID
+GROUP BY s.STUDENT_ID, s.LAST_NAME, s.FIRST_NAME, se.COURSE_NO
+HAVING COUNT(se.COURSE_NO) > 1
+ORDER BY s.STUDENT_ID;

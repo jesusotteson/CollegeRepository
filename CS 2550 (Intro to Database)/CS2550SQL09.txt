@@ -1,0 +1,78 @@
+CS2550SQL09
+Jesus Otteson
+
+1.Create an alphabetic listing of all instructors and the number of sections that they have taught. The number of sections can be null for instructors that have not taught any sections.
+
+SELECT i.first_name, i.last_name,NULLIF(COUNT(s.section_id),0) 
+	AS counted_sections
+FROM instructor i LEFT OUTER JOIN section s 
+	ON i.instructor_id = s.instructor_id
+GROUP BY i.first_name, i.last_name
+ORDER BY i.last_name;
+
+2.List the course number of courses wherein students have received grades for every one of the possible defined grade types. Order by course number.
+
+SELECT c.course_no
+FROM course c, section s, grade g
+WHERE s.course_no = c.course_no 
+    AND s.section_id = g.section_id
+GROUP BY c.course_no HAVING COUNT(DISTINCT g.grade_type_code) = 
+                                 (SELECT COUNT (DISTINCT grade_type_code)FROM grade)
+ORDER BY c.course_no;
+
+3.List all of the zip codes in Flushing, NY and the number of enrolled students from each of the zip codes. Sort by zip code. Show 0 for zip codes with no students enrolled.
+
+SELECT z.zip, COUNT(students) AS students
+FROM zipcode z
+LEFT OUTER JOIN(SELECT lz.zip, s.student_id, e.enroll_date AS students
+           FROM student s
+           LEFT JOIN zipcode lz 
+                ON s.zip = lz.zip
+                LEFT JOIN enrollment e 
+                ON s.student_id = e.student_id
+           WHERE lz.state = 'NY'
+                AND lz.city = 'Flushing'
+           GROUP BY lz.zip, s.student_id, e.enroll_date) rt
+    ON z.zip = rt.zip
+WHERE z.state = 'NY'
+    AND z.city = 'Flushing'
+GROUP BY z.zip
+ORDER BY z.zip;
+
+4.List course number and description all of the Java courses and the total number of enrollments for each course. Arrange by course number. Show zero for courses with no students enrolled.
+
+SELECT DISTINCT c.course_no, c.description, NVL(SUM(enrollments),0) AS enrollments
+FROM course c
+LEFT OUTER JOIN
+       (SELECT DISTINCT co.course_no, co.description, stud.student_id, NVL(COUNT(e.enroll_date),0) AS enrollments
+	FROM course co, section s, enrollment e, student stud
+	WHERE co.course_no = s.course_no
+		AND s.section_id = e.section_id
+		AND e.student_id = stud.student_id
+		AND DESCRIPTION LIKE '%Java%'
+	GROUP BY co.course_no, co.description, stud.student_id
+	ORDER BY co.course_no) rt
+ON c.course_no = rt.course_no
+WHERE c.description LIKE '%Java%'
+GROUP BY c.course_no, c.description
+ORDER BY c.course_no;
+
+5.List student ID and Name of all of the students in area code 617 along with the number of enrollments each has. If the student has not enrolled in any courses, display the word “none” in the enrollments column.
+Alphabetize the list on last name and first name.
+
+SELECT st.student_id, st.first_name, st.last_name, (CASE WHEN TO_CHAR(SUM(enrollments))=0 THEN 'none' ELSE TO_CHAR(SUM(enrollments))END) enrollments
+FROM student st
+LEFT OUTER JOIN
+(SELECT s.student_id, sec.course_no, COUNT(e.enroll_date) AS enrollments
+FROM student s
+    LEFT JOIN enrollment e on s.student_id = e.student_id
+    LEFT JOIN section sec ON e.section_id = sec.section_id
+WHERE s.phone LIKE '617%'
+GROUP BY s.student_id, sec.course_no) rt
+    ON st.student_id = rt.student_id
+WHERE st.phone LIKE '617%'
+GROUP BY st.student_id, st.first_name, st.last_name, enrollments
+ORDER BY st.last_name, st.first_name;49:56 AM 8/3/2017
+
+6.Extra Credit  (Alternative form of Query #2)
+List the course number of courses wherein students have NOT received grades for every one of the possible grade types offered in the course.  Order by Course Number.

@@ -1,0 +1,6 @@
+Jesus Otteson
+
+1) System Calls allow the user to request services of the operating system like, run my C File.
+2) IPC_STAT , IPC_SET, IPC_RMID
+3) sysproc.c & sysfile.c
+4) By creating a make file and referencing what files you would like to run in it.

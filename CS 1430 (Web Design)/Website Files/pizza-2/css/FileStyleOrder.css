@@ -1,0 +1,126 @@
+
+  body {
+    height: 100%;
+    margin: 20;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
+    background-color: #F5F5DC;
+    }
+  h1 {
+    font-size: 50px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    margin-left: 41px;
+    text-align: center;
+    position: relative;
+    }
+  h2 {
+    font-size:50px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    margin-left: 41px;
+    text-align: left;
+    }
+  h3 {
+    font-size:50px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    margin-right: 155px;
+    text-align: right;
+  }
+  h4 {
+    font-size:50px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    margin-left: 41px;
+    text-align: left;
+  }
+  p {
+    font-size: 30px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    }
+  input {
+    font-size:20px;
+    color:#00FF00;
+    background-color: black;
+    width: 400px;
+    border: 10px solid red;
+    padding: 10px;
+    margin: 10px;
+    }
+    img{
+      float: right;
+      margin-right: 155px;
+    }
+    input.Toppings{
+      width: 10px;
+    }
+    input.Crust{
+      width: 10px;
+    }
+  select, option{
+    color: #00FF00;
+    padding: 10px;
+    margin: 50px;
+    width: 300px;
+    background: black;
+    border: 10px solid red;
+    float: right;
+  }
+  ul{
+    text-align: center;
+    }
+  ul li{
+    display: inline-block;
+  }
+  ul li a{
+    font-size: 25px;
+    color:red;
+    text-shadow: 2px 2px 5px #00ff00;
+    font-family: tahomal;
+    text-decoration: none;
+    display: block;
+    padding: 2px 5px;
+    }
+  ul li a:hover{
+    color: black;
+    }
+
+    textarea {
+    background-color: black;
+    flex-direction: column;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-width: 10px;
+    border-style: solid;
+    border-color: red;
+    padding: 10px;
+    height: 50px;
+    width: 400px;
+    left: 300px;
+    margin-left: 59px;
+    color: #00FF00;
+    font-size:20px;
+  }
+  div.toppings{
+    font-size: 30px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    padding-left: 1em;
+  }
+  div.Crust{
+    font-size: 30px;
+    color: #000;
+    text-shadow: 2px 2px 5px #00ff00;
+    padding-left: 1em;
+  }
+  div.info{
+    padding-left: 50px;
+  }
+  a.Hometab{
+    text-decoration: underline;
+  }

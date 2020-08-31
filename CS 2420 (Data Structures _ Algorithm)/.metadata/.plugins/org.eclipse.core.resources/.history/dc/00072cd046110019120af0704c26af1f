@@ -1,0 +1,12 @@
+package mainPackage;
+
+public class helloworld {
+	public static void main(String[] args) {
+		int i = 1;
+		if (i == 0) {
+			System.out.println("Jimmy Eat World" + ", " + "Jimmy is also fat");
+		} else if (i == 1) {
+			System.out.println("Jimmy Eat World" + ", " + "Jimmy is stupid");
+		}
+	}
+}

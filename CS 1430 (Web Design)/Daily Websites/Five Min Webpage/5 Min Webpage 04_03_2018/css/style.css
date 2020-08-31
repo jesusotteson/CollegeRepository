@@ -1,0 +1,76 @@
+/* CSS */
+* {margin: 0; padding: 0;}
+html {background-image: url('../img/bg-yellow.png');}
+button
+{
+padding: 15px;
+font-size: 25px;
+display: block;
+margin-left: 20px;
+margin-top: 15px;
+}
+img
+{
+	display: block;
+	padding: 20px;
+	float: left;
+}
+p
+{
+	margin: 13px 0;
+	font-size: 25px;
+	font-family: 'Yatra One', cursive;
+}
+h1, h2
+{
+	font-family: 'Chicle', cursive;
+}
+h1
+{
+	font-size: 50px;
+}
+p.small
+{
+	font-size: 15px;
+}
+h2
+{
+	font-size: 40px;
+	border-top: 5px solid cornsilk;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+h2 span
+{
+	transition: all 500ms;
+}
+h2 span:hover
+{
+	cursor: pointer;
+	color: #ccc;
+}
+body
+{
+	background-color: white;
+	width: 1000px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 25px;
+}
+ul
+{
+	margin: 15px 0 15px 45px;
+	font-family: 'Yatra One', cursive;
+	display: none;
+}
+
+
+ul.show
+{
+	display: block;
+}
+
+li
+{
+	font-size: 30px;
+}

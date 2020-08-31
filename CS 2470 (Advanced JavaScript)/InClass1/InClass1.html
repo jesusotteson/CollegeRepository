@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Basics with JSON Format</title>
+        <link rel="stylesheet" href="layout.css" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var data = {"Adventure": [
+                    {
+                        "place": "You wake up in a strange place...",
+                        "option1": {
+                            "text": "Left",
+                            "value": 1},
+                        "option2": {"text": "Right",
+                            "value": 2,
+                            "img": "https://www.hshlawyers.com/wp-content/uploads/iStock-514927720.jpg"}
+
+                    },
+                    {
+                        "place": "You try to remember where to go...",
+                        "option1": {
+                            "text": "Kitchen",
+                            "value": 4},
+                        "option2": {"text": "Hall",
+                            "value": 3}
+
+                    },
+                    {
+                        "place": "A Monster Approaches",
+                        "option1": {
+                            "text": "Run",
+                            "value": 4},
+                        "option2": {"text": "Fight",
+                            "value": 0}
+
+                    },
+                    {
+                        "place": "A vast room around you",
+                        "option1": {
+                            "text": "Pick up Key",
+                            "value": 4},
+                        "option2": {"text": "Pick up Sword",
+                            "value": 2}
+
+                    },
+                    {
+                        "place": "The end is near...",
+                        "option1": {
+                            "text": "Exit",
+                            "value": 0},
+                        "option2": {"text": "Eat Moss Fruit on the ground",
+                            "value": 0}
+
+                    }
+                ]}
+            var choice = 0;
+            function adventureOn(choice) {
+
+                document.getElementById("placeholder").innerHTML = "<form><p>" + data.Adventure[choice].place + "</p><p> "
+                        + "<input type=\"radio\" value=\"" + data.Adventure[choice].option1.value + "\" onchange=\"adventureOn(this.value)\">"
+                        + data.Adventure[choice].option1.text
+                        + "<br><input type=\"radio\" value=\"" + data.Adventure[choice].option2.value + "\" onchange=\"adventureOn(this.value)\">"
+                        + data.Adventure[choice].option2.text;
+            }
+        </script>
+    </head>
+    <body>
+
+        <div id="placeholder">
+            <form>
+                <p>Will you drink the potion?</p>
+                <p>
+                    <input type="radio" value="0" onchange="adventureOn(this.value)">Yes
+                </p>
+            </form>
+        </div>
+    </body>
+</html>

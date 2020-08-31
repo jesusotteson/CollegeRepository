@@ -1,0 +1,42 @@
+{
+    "people":[{"relation":"Wife",
+      "name":"Shaylee",
+        "lname":"Avery"
+        },
+        {"name":"Riley",
+        "lname":"Preece",
+            "relation":"Friend"
+        },
+        {"name":"Mitch",
+        "lname":"Stenquist",
+            "relation":"Friend"
+        },
+        {"name":"Regina",
+        "lname":"Campbell",
+            "relation":"Mother-In-Law"
+        },
+        {"name":"Andre",
+        "lname":"Vasquez",
+            "relation":"Brother-In-Law"
+        },
+        {"name":"Sharese",
+        "lname":"Vasquez",
+            "relation":"Sister-In-Law"
+        },
+        {"name":"Judah",
+        "lname":"Vazquez",
+            "relation":"Nephew"
+        },
+        {"name":"Ramon",
+        "lname":"Perez",
+            "relation":"Father"
+        },
+        {"name":"Yolandra",
+        "lname":"Perez",
+            "relation":"Step Mother"
+        },
+        {"name":"Kiwi",
+        "lname":"Koko",
+            "relation":"Cats"
+        }]
+}

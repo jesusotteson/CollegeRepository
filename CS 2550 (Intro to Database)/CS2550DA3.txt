@@ -1,0 +1,121 @@
+
+
+1.
+CREATE TABLE Player
+(School VARCHAR2(20), 
+ Player_Number Number(2,0),
+ Player_Name VARCHAR2(20),
+ Primary Key (School, Player_number));
+
+Create Table Player_game
+(School VARCHAR2(20),
+ Player_number number(2,0),
+ Game_number number(2,0),
+ Primary key(School, Player_number, Game_number));
+
+CREATE TABLE School
+(School VARCHAR2(20) Primary key,
+ City   VARCHAR2(20),
+ Coach  VARCHAR2(20),
+ Team_Name VARCHAR2(20),
+ Win_Record Number(2,0),
+ Lose_Record Number(2,0));
+
+Create Table Game
+(School VARCHAR2(20),
+ Game_number number(2,0),
+ Game_date date,
+ Game_score VARCHAR2(10),
+ Primary Key (School, Game_number));
+
+2.
+INSERT INTO Player(School, Player_number, Player_name)
+Values ('Weber',42,'Locke');
+INSERT INTO Player(School, Player_number, Player_name)
+Values ('Weber',18,'Reyes');
+INSERT INTO Player(School, Player_number, Player_name)
+Values ('Northridge',6,'Austin');
+INSERT INTO Player(School, Player_number, Player_name)
+Values ('Davis',42,'Shepard');
+
+INSERT INTO School(school, city, coach, team_name, win_record, lose_record)
+Values ('Weber','North Ogden', 'Corbridge', 'Warriors', 3, 6);
+INSERT INTO School(school, city, coach, team_name, win_record, lose_record)
+Values ('Northridge', 'Layton', 'Thompson', 'Knights' , 9, 3);
+INSERT INTO School(school, city, coach, team_name, win_record, lose_record)
+Values ('Davis', 'Kaysville', 'Bishop', 'Darts', 8, 2);
+
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Weber', 42, 1);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Weber', 42, 2);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Weber', 18, 1);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Weber', 18, 2);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Northridge', 6, 1);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Northridge', 6, 2);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Davis', 42, 1);
+INSERT INTO Player_game(School, Player_number, game_number)
+Values ('Davis', 42, 2);
+
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Weber', 1, TO_date('20-AUG-2011', 'DD-MON-YYYY'), '3 - 7(L)');
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Weber', 2, TO_date('27-AUG-2011', 'DD-MON-YYYY'), '0 - 31(L)');
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Northridge', 1, TO_date('20-AUG-2011', 'DD-MON-YYYY'), '21 - 14(W)');
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Northridge', 2, TO_date('03-SEP-2011', 'DD-MON-YYYY'), '13 - 54(L)');
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Davis', 1, TO_date('03-SEP-2011', 'DD-MON-YYYY'), '27 - 20(W)');
+INSERT INTO Game(School, game_number, game_date, game_score)
+Values ('Davis', 2, TO_date('17-SEP-2011', 'DD-MON-YYYY'), '6 - 14(L)');
+
+3.
+Select ('Table Game has '||numrows||' rows') as output
+From (Select count(*) AS numrows
+FROM game);
+
+Select ('Table School has '||numrows||' rows') as output
+From (Select count(*) AS numrows
+FROM School);
+
+Select ('Table Player_Game has '||numrows||' rows') as output
+From (Select count(*) AS numrows
+FROM Player_game);
+
+Select ('Table Player has '||numrows||' rows') as output
+From (Select count(*) AS numrows
+FROM Player);
+
+4.
+SELECT game_score
+FROM Game
+WHERE game_number = 1
+  AND school = 'Weber';
+
+5.
+SELECT distinct p.school, p. player_number, p.PLAYER_NAME,g.game_date, g.game_score, count(*)
+FROM player p, player_game pg, game g
+WHERE p.player_number = pg. player_number
+  And p.school = pg.school
+  and g.school = pg.school
+  And g.game_number = pg.game_number
+  And pg.game_number is not null
+Group by p.school, p. player_number, p.PLAYER_NAME,g.game_date, g.game_score
+Order by p.school desc;
+
+6.
+SELECT school,game_number, count(*)
+FROM player_game
+Group by school, game_number
+ORDER BY school desc;
+
+7.
+SELECT coach, win_record, lose_record
+FROM school
+ORDER BY lose_record desc;

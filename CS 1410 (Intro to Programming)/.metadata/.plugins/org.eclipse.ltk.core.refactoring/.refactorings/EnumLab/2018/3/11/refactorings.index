@@ -1,0 +1,8 @@
+1520961448087	Delete element
+1520964706241	Extract method 'setUp'
+1520964743106	Extract method 'makePenny'
+1520964750306	Extract method 'makeNickel'
+1520964764260	Extract method 'makeDime'
+1520964774177	Extract method 'makeQuarter'
+1520964790388	Extract method 'makeDisplay'
+1520964854991	Extract method 'createActionListeners'

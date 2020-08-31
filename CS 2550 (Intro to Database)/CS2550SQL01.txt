@@ -1,0 +1,61 @@
+Computer Science 2550
+SQL 01
+
+1.
+Select LAST_NAME, FIRST_NAME
+From instructor
+Order By Last_name, First_name;
+
+2.
+Select Location
+From Section
+Order By location
+
+3.
+Select FIRST_NAME, LAST_NAME
+From instructor
+Where (last_name like 'W%')
+Order By First_Name, Last_Name;
+
+4.
+Select Phone, first_name || ' ' || last_name AS full_name, Employer
+From Student
+Where (last_name like 'Miller%');
+From Student
+Order By Phone;
+
+5.
+Select Course_No, Description
+From Course
+Where prerequisite = 20
+Order By course_no;
+
+6.
+SELECT course_no, description, cost
+FROM Course 
+WHERE course_no >= 200 AND course_no <= 299 AND cost < 1100; 
+ORDER BY course_no;
+
+7.
+SELECT course_no, section_id 
+FROM Section 
+WHERE course_no >= 100 AND course_no <= 199 AND location = 'L214' OR location ='L211' 
+ORDER BY course_no, section_id;
+
+8.
+SELECT course_no, section_id 
+FROM Section 
+WHERE capacity IN (10, 12) 
+ORDER BY course_no, section_id;
+
+9.
+SELECT DISTINCT student_id, numeric_grade 
+FROM Grade 
+WHERE SUBSTR(section_id, 1, 3) = 147 AND Grade_Type_Code = 'FI' 
+ORDER BY student_id, numeric_grade;
+
+10.
+SELECT course_no, description 
+FROM Course 
+WHERE course_no >= 200 AND course_no <= 299 
+ORDER BY description;

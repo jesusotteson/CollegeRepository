@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>word changer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/site.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#wordwierd").keyup(function (e) { //user types username on inputfiled
+                    var word = $(this).val(); //get the string typed by user
+                    var color = $('#colordrp').val();
+                    $.post('changewords.php', {'word': word, 'color':color}, function (data) { //make ajax call to check_username.php
+                        $("#user-result").html(data); //dump the data received from PHP page
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>Write a Word and see the strange text.</header>
+            <div class="content">
+                <div class="main">
+                    <form>
+                        Word: <input class="text" id="wordwierd"/> Now Pick a Color: <select class="section" id ="colordrp">
+                            <option value ="red">Red</option>
+                            <option value ="blue">Blue</option>
+                            <option value ="orange">Orange</option>
+                            <option value ="green">Green</option>
+                            <option value ="pink">Pink</option>
+                        </select>
+                    </form>
+                    <div id="user-result"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

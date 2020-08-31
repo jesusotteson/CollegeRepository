@@ -1,0 +1,123 @@
+
+h1 {
+  text-align: center;
+  font-family: 'Ribeye', cursive;
+  font-size: 50px;
+  border: 15px solid #4a3a50;
+  background-color: #40503a;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
+
+}
+h2 {
+  font-family: 'Ribeye', cursive;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+body {
+   background-color: #3a504a;
+}
+
+ul{
+  font-size: 25px;
+  text-align: center;
+}
+ul li{
+  display: inline-block;
+}
+ul li a{
+  font-size: 25px;
+  color:black;
+  text-shadow: 2px 2px 5px #00ff00;
+  font-family: tahomal;
+  text-decoration: none;
+  display: block;
+  padding: 2px 5px;
+  padding-right: 90px;
+  }
+ul li a:hover{
+  color: red;
+  }
+p{
+  padding: 20px;
+  margin: 5px;
+}
+div.Menu{
+  order: 1;
+}
+div.Content{
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+div.div-1{
+  background-color: #503a40;
+  opacity: 0.5;
+  order: 2;
+  flex: 2;
+  transition: opacity 300ms;
+  transition: transform 300ms;
+  margin: 25px;
+  text-align: center;
+  font-size: 25px;
+  border: 15px solid #4a3a50;
+}
+div.div-1:hover{
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+  transform: rotate(3deg);
+  }
+div.div-2{
+  background-color: #3a4050;
+  opacity: 0.3;
+  order: 2;
+  flex: 2;
+  transition: opacity 300ms;
+  transition: transform 300ms;
+  margin: 25px;
+  text-align: center;
+  font-size: 25px;
+  border: 15px solid #4a3a50;
+}
+div.div-2:hover{
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+  transform: rotate(-3deg);
+  }
+div.div-3{
+  background-color: #7c5a63;
+  opacity: 0.5;
+  order: 2;
+  flex: 2;
+  transition: opacity 300ms;
+  transition: transform 300ms;
+  margin: 25px;
+  text-align: center;
+  font-size: 25px;
+  border: 15px solid #4a3a50;
+}
+div.div-3:hover{
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+  transform: rotate(3deg);
+  }
+.img1{
+  height: 50%;
+  width: 50%;
+  padding-left: 25%;
+  padding-bottom: 2%;
+}
+.img2{
+  height: 50%;
+  width: 50%;
+  padding-right: 25%;
+  padding-bottom: 2%;
+}
+.img3{
+  height: 50%;
+  width: 50%;
+  padding-left: 25%;
+  padding-bottom: 2%;
+}

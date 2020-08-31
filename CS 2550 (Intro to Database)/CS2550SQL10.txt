@@ -1,0 +1,156 @@
+CS2550SQL10
+Jp Otteson
+
+1.Insert a new instructor: Mr. Hugo Reyes with an ID of 815. His address is 2342 
+Oceanic Way, Bayonne, NJ, 07002. He doesn't have a phone number.
+
+INSERT INTO instructor (instructor_id,salutation,first_name,last_name,street_address,zip,phone,created_by,created_date,modified_by,modified_date)
+VALUES (815,'MR','Hugo','Reyes','2342 Oceanic Way','07002',null,'jotteson',sysdate,'jotteson',sysdate);
+
+2.Create a new section ID of 48 for Mr. Reyes. He'll be teaching section 4 of the 
+Project Management Course (142) beginning on September 22, 2011 at 8:15am 
+in Room L211. The capacity is 15 students.
+
+INSERT INTO section (section_id,course_no,section_no,start_date_time,location,instructor_id,capacity,created_by,created_date,modified_by,modified_date)
+VALUES (48,142,4, TO_date('22-SEP-2011 08:15 am', 'DD-MON-YYYY HH:MI am'),'L211',815,15,'jotteson',sysdate,'jotteson',sysdate);
+
+3.Enroll students 375, 137, 266 and 382 in the course. Their enrollment date 
+should be the current date. Use ONE INSERT statement. (Hint: Page 436)
+
+INSERT INTO enrollment (student_id,section_id,enroll_date,created_by,created_date,modified_by,modified_date)
+SELECT student_id,48,sysdate,'jotteson',sysdate,'jotteson',sysdate
+FROM student
+WHERE student_id = 375
+  OR student_id = 137
+  OR student_id = 266
+  OR student_id = 382;
+
+4.Try to remove the enrollment for student 147 from section 120.
+*Note the error. You cannot delete the enrollment record because there are 
+foreign keys in the Grade table that depend on the Enrollment table records, 
+thus creating an integrity constraint violation.
+First remove all grades for student 147, section 120 
+Then remove remove the enrollment for student 147, section 120.  (You'll use 
+two DELETE statements).
+
+DELETE FROM grade
+WHERE section_id = 120
+  AND student_id = 147;
+
+DELETE FROM enrollment
+WHERE section_id = 120
+  AND student_id = 147;
+
+5.Use the same procedure to remove the enrollment record for student 180 in 
+section 119.
+
+DELETE FROM grade
+WHERE section_id = 119
+  AND student_id = 180;
+
+DELETE FROM enrollment
+WHERE section_id = 119
+  AND student_id = 180;
+
+6.Change Mr. Reyes' (ID 815) phone number to be 4815162342.
+
+UPDATE instructor
+SET phone = '4815162342'
+WHERE instructor_id = 815;
+
+7.Change the grade on the first homework (HM) assignment for each student 
+in section 119 to 100.
+
+UPDATE grade
+SET numeric_grade = 100
+WHERE section_id = 119
+  AND grade_type_code = 'HM'
+  AND grade_code_occurrence = 1;
+
+8.Increase the final exam (FI) score for each student in section 119 by 10 percent.
+
+UPDATE grade
+SET numeric_grade = (numeric_grade * .1) + numeric_grade
+WHERE section_id = 119
+  AND grade_type_code = 'FI';
+
+9.For each section of the Project Management course, list the section ID, location 
+and number of students enrolled. Sort by section ID.
+
+
+
+10.Provide an alphabetic list of instructor names and phone numbers for instructors 
+that teach the Project Managment course.
+
+SELECT first_name, last_name, phone
+FROM instructor i, section se
+WHERE i.instructor_id = se.instructor_id
+  AND se.course_no = 
+       (SELECT course_no
+        FROM course
+        WHERE description = 'Project Management')
+ORDER BY last_name, first_name;
+
+11.Provide a list of students in section 119 along with their average numeric grade. 
+Include the student id, student name and average grade. Format the average to 
+two places.  Sort by student ID.
+
+SELECT st.student_id, st.first_name, st.last_name, TO_Char(avg(g.numeric_grade), 99.99) AS Average
+FROM student st, grade g
+WHERE st.student_id = g.student_id
+  AND g.section_id = 119
+GROUP BY st.student_id, st.first_name, st.last_name 
+ORDER BY st.student_id;
+
+12.Create a query to determine the number of instructors who have taught more 
+than 3 students in a course section taught in Room L211.
+
+SELECT count(instructors) AS numberofinstructors
+FROM 
+   (SELECT count(*)as instructors
+    FROM section se, instructor i, enrollment e
+    WHERE location = 'L211'
+      AND se.instructor_id = i.instructor_id
+      AND se.section_id = e.section_id
+    GROUP BY i.instructor_id,se.location
+    HAVING count(*) > 3);
+
+13.Create a list of instructors that have taught only the Project Management course 
+(142). List the instructor's name (salutation, first name, last name) and their 
+phone number. Sort Alphabetically.
+
+SELECT (salutation|| ' ' || first_name||' '||last_name) AS instructor, phone
+FROM instructor 
+WHERE instructor_id =
+   (SELECT instructor_id
+    FROM section
+    WHERE instructor_id in
+         (SELECT instructor_id
+          FROM section
+          WHERE course_no = 142)
+    GROUP BY instructor_id
+    HAVING count(*) = 1);
+
+14.Provide an alphabetic list of student names, section id and course number for 
+students that have not yet received any grades in the course section.
+
+SELECT DISTINCT st.first_name, st.last_name, e.section_id, se.course_no
+FROM enrollment e, section se, student st
+WHERE e.section_id = se.section_id
+  AND st.student_id = e.student_id
+  AND e.section_id in
+      (SELECT e.section_id
+      FROM enrollment e left outer join grade g
+      ON e.section_id = g.section_id
+      WHERE g.numeric_grade is null);
+
+15.List each unique section start time and the number of courses (not sections) that 
+have been taught at that time.  Sort by start time.
+
+SELECT DISTINCT TO_CHAR(start_date_time, 'HH:MIAM') AS starttime, count(DISTINCT course_no) as number_of_courses
+FROM section
+WHERE TO_CHAR(start_date_time, 'HH:MIAM') in 
+     (SELECT DISTINCT TO_CHAR(start_date_time, 'HH:MIAM')
+      FROM section)
+GROUP BY TO_CHAR(start_date_time, 'HH:MIAM')
+ORDER BY starttime; 

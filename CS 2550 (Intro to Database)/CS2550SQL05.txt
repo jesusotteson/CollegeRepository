@@ -1,0 +1,86 @@
+Computer Science 2550
+SQL 5
+Jesus Otteson
+
+1.
+SELECT DISTINCT s.course_no, c.description, c.cost
+FROM section s, instructor i, course c
+WHERE i.last_name = 'Lowry'
+	AND i.first_name = 'Charles'
+	AND s.course_no = c.course_no
+	AND s.instructor_id = i.instructor_id
+	AND c.cost IS NOT NULL
+ORDER BY course_no;
+
+2.
+SELECT MAX(numeric_grade) AS "Highest_Final_GRADE"
+FROM grade g, section s
+WHERE s.section_id = g.section_id
+AND s.course_no = 130;
+
+3.
+SELECT s.first_name, s.last_name, z.city, s.phone
+FROM student s, zipcode z
+WHERE s.zip=z.zip
+	AND z.city = 'New York'
+	AND z.state = 'NY'
+ORDER BY s.last_name, s.first_name;
+
+4.
+SELECT g.grade_type_code, g.description, gtw.number_per_section
+FROM grade_type g, section s, grade_type_weight gtw
+WHERE g.grade_type_code = gtw.grade_type_code
+	AND gtw.section_id = s.section_id
+	AND s.course_no = 220
+ORDER BY g.description;
+
+5.
+SELECT s.student_id, s.last_name ||', '|| s.first_name AS Student_Name
+FROM grade g, enrollment e, student s
+WHERE g.student_id = e.student_id
+	AND e.student_id = s.student_id
+GROUP BY s.student_id, s.last_name, s.first_name
+HAVING AVG(g.numeric_grade) < 80
+ORDER BY s.last_name, s.first_name;
+
+6.
+SELECT cost, COUNT(cost) AS COURSES
+FROM course
+GROUP BY cost
+HAVING COUNT(cost) > 2
+ORDER BY cost;
+
+7.
+SELECT DISTINCT c.course_no, COUNT(*) AS ENROLLED
+FROM enrollment e, section s, course c
+WHERE e.section_id = s.section_id
+    AND s.course_no = c.course_no
+    AND c.prerequisite IS NULL
+GROUP BY c.course_no
+ORDER BY ENROLLED;
+
+8.
+SELECT DISTINCT s.first_name, s.last_name, TO_CHAR(e.enroll_date, 'DD-MON-YYYY HH:MI AM') AS ENROLL_DATE
+FROM enrollment e, student s, zipcode z
+WHERE e.student_id = s.student_id
+    AND s.zip = z.zip
+    AND e.enroll_date > TO_DATE('19-FEB-2007 10:20:00 AM', 'DD-MON-YYYY HH:MI:SS AM')
+    AND z.city= 'Stamford'AND z.state = 'CT'
+ORDER BY s.last_name, s.first_name;
+
+9.
+SELECT c.course_no, c.description
+FROM grade_type gt, grade_type_weight gtw, section s, course c
+WHERE gt.grade_type_code = gtw.grade_type_code
+    AND gtw.section_id = s.section_id
+    AND s.course_no = c.course_no
+    AND gt.description = 'Project'
+ORDER BY c.course_no;
+
+10.
+SELECT c.course_no, c.prerequisite, co.description
+FROM course c JOIN course co
+ON c.prerequisite = co.course_no
+WHERE c.course_no BETWEEN 300 AND 399
+AND c.prerequisite IS NOT NULL
+ORDER BY c.course_no;

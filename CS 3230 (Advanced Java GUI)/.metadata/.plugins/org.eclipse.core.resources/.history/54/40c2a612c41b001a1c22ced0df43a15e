@@ -1,0 +1,334 @@
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
+
+public class Main extends JFrame
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<Tile> deck = new ArrayList<>();
+	int xCord;
+	int yCord;
+	int tileHeight;
+	int tileWidth;
+	int zz;
+	Image background;
+	Image dragon;
+
+	public Main()
+	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Wooo Lab 7!");
+		Random rand = new Random();
+		for(int i = 0; i < 4; i++)
+		{
+			deck.add(new CharacterTile('1'));
+			deck.add(new CharacterTile('2'));
+			deck.add(new CharacterTile('3'));
+			deck.add(new CharacterTile('4'));
+			deck.add(new CharacterTile('5'));
+			deck.add(new CharacterTile('6'));
+			deck.add(new CharacterTile('7'));
+			deck.add(new CharacterTile('8'));
+			deck.add(new CharacterTile('9'));
+			deck.add(new CharacterTile('N'));
+			deck.add(new CharacterTile('E'));
+			deck.add(new CharacterTile('W'));
+			deck.add(new CharacterTile('S'));
+			deck.add(new CharacterTile('C'));
+			deck.add(new CharacterTile('F'));
+			deck.add(new CircleTile(1));
+			deck.add(new CircleTile(2));
+			deck.add(new CircleTile(3));
+			deck.add(new CircleTile(4));
+			deck.add(new CircleTile(5));
+			deck.add(new CircleTile(6));
+			deck.add(new CircleTile(7));
+			deck.add(new CircleTile(8));
+			deck.add(new CircleTile(9));
+			deck.add(new WhiteDragonTile());
+			deck.add(new Bamboo1Tile());
+		}
+		deck.add(new FlowerTile("Chrysanthemum"));
+		deck.add(new FlowerTile("Orchid"));
+		deck.add(new FlowerTile("Plum"));
+		deck.add(new FlowerTile("Bamboo"));
+		deck.add(new SeasonTile("Spring"));
+		deck.add(new SeasonTile("Summer"));
+		deck.add(new SeasonTile("Fall"));
+		deck.add(new SeasonTile("Winter"));
+
+		Collections.shuffle(deck, rand);
+		pack();
+		setSize(700, 700);
+		setLocation((700 - this.getWidth()) / 2, (700 - this.getHeight()) / 2);
+		add(new Board());
+		setVisible(true);
+	}
+
+	public class Board extends JPanel implements MouseListener
+	{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		//This is ugly...
+		public void setTile(ArrayList<Tile> deck, int i) {
+			tileWidth = deck.get( 0 ).getWidth();
+			tileHeight = deck.get( 0 ).getWidth();
+			zz = tileWidth / 2;
+
+			if(i == 0)
+			{
+				deck.get(i).setLocation((700 - tileWidth) / 2, (700 - tileHeight) / 2);
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+
+				xCord = deck.get(i).getLocation().x;
+				yCord = deck.get(i).getLocation().y;
+			}
+
+			if(i > 0 && i < 5)
+			{
+				deck.get(i).setLocation((deck.get(i-1).getLocation().x) - zz, (deck.get(i-1).getLocation().y) + zz );
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+				i++;
+				deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+				i++;
+				deck.get(i).setLocation((deck.get(i-2).getLocation().x), (deck.get(i-2).getLocation().y) - (tileHeight - 10));
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+				i++;
+				deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), (deck.get(i-1).getLocation().y));
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+			}
+
+			if(i > 4 && i < 20)
+			{
+				deck.get(i).setLocation((xCord) - (tileWidth + zz), (yCord) + (tileWidth + zz));
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+				i++;
+
+				for(int j = 1; j < 4; j++)
+				{
+					deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+					deck.get(i).addMouseListener(this);
+					add(deck.get(i));
+					i++;
+					if(j == 3)
+					{
+						deck.get(i).setLocation((xCord) - (tileWidth + zz), ((yCord) + (tileWidth - zz + 10))); // fix width and height = - 10
+						deck.get(i).addMouseListener(this);
+						add(deck.get(i));
+						i++;
+
+						for(j = 1; j < 4; j++)
+						{
+							deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+							deck.get(i).addMouseListener(this);
+							add(deck.get(i));
+							i++;
+							if(j == 3)
+							{
+								deck.get(i).setLocation((xCord) - (tileWidth + zz), (yCord - zz + 20)); // fix width and height = - 10
+								deck.get(i).addMouseListener(this);
+								add(deck.get(i));
+								i++;
+
+								for(j = 1; j < 4; j++)
+								{
+									deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+									deck.get(i).addMouseListener(this);
+									add(deck.get(i));
+									i++;
+									if(j == 3)
+									{
+										deck.get(i).setLocation((xCord) - (tileWidth + zz), (yCord) - (tileWidth + 10) ); // fix width and height = - 10
+										deck.get(i).addMouseListener(this);
+										add(deck.get(i));
+										i++;
+										for(j = 1; j < 4; j++)
+										{
+											deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+											deck.get(i).addMouseListener(this);
+											add(deck.get(i));
+											i++;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+
+			//----layer 3 row 6
+			if(i > 21 && i < 58)
+			{
+				deck.get(i).setLocation((xCord) - ((tileWidth * 2) + zz), (yCord) + ((tileWidth * 2) + zz) ); // fix width and height = - 10
+				deck.get(i).addMouseListener(this);
+				add(deck.get(i));
+				i++;
+
+				for(int j = 1; j < 6; j++)
+				{
+					deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+					deck.get(i).addMouseListener(this);
+					add(deck.get(i));
+					i++;
+					if(j == 5)
+					{
+						deck.get(i).setLocation((xCord) - ((tileWidth * 2) + zz), (yCord) + (tileWidth + zz + 10));
+						deck.get(i).addMouseListener(this);
+						add(deck.get(i));
+						i++;
+
+						for(j = 1; j < 6; j++)
+						{
+							deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+							deck.get(i).addMouseListener(this);
+							add(deck.get(i));
+							i++;
+							if(j == 5)
+							{
+								deck.get(i).setLocation((xCord) - ((tileWidth *2) + zz), ((yCord) + (tileWidth - zz + 20))); // fix width and height = - 10
+								deck.get(i).addMouseListener(this);
+								add(deck.get(i));
+								i++;
+
+								for(j = 1; j < 6; j++)
+								{
+									deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+									deck.get(i).addMouseListener(this);
+									add(deck.get(i));
+									i++;
+									if(j == 5)
+									{
+										deck.get(i).setLocation((xCord) - ((tileWidth *2) + zz), (yCord - 10 ));
+										deck.get(i).addMouseListener(this);
+										add(deck.get(i));
+										i++;
+
+										for(j = 1; j < 6; j++)
+										{
+											deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+											deck.get(i).addMouseListener(this);
+											add(deck.get(i));
+											i++;
+											if(j == 5)
+											{
+												deck.get(i).setLocation((xCord) - ((tileWidth * 2) + zz), (yCord - tileHeight) );
+												deck.get(i).addMouseListener(this);
+												add(deck.get(i));
+												i++;
+
+												for(j = 1; j < 6; j++)
+												{
+													deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+													deck.get(i).addMouseListener(this);
+													add(deck.get(i));
+													i++;
+													if(j == 5)
+													{
+														deck.get(i).setLocation((xCord) - ((tileWidth * 2) + zz), (yCord) - (tileWidth * 2) + 10 ); // fix width and height = - 10
+														deck.get(i).addMouseListener(this);
+														add(deck.get(i));
+														i++;
+
+														for(j = 1; j < 6; j++)
+														{
+															deck.get(i).setLocation((deck.get(i-1).getLocation().x) + (tileWidth - 10), deck.get(i-1).getLocation().y);
+															deck.get(i).addMouseListener(this);
+															add(deck.get(i));
+															i++;
+
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		}
+
+		public Board() {
+			setSize( 700, 700 );
+			setLayout( null );
+
+			for (int i = 0; i < deck.size(); i++) {
+				setTile( deck, i );
+			}
+		}
+
+		@Override public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+			try{
+				background = ImageIO.read(getClass().getResource("images/wood_background.jpg"));
+				dragon = ImageIO.read(getClass().getResource("images/dragon_background.png"));
+			}catch(IOException e){}
+			Rectangle2D r = new Rectangle2D.Double(0, 0, 300, 300);
+			g2.setPaint(new TexturePaint((BufferedImage) background,r));
+			Rectangle2D bg = new Rectangle2D.Double(0, 0, 700, 700);
+			g2.fill(bg);
+			AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
+			g2.setComposite(composite);
+			g2.drawImage(dragon, 0, 0, null);
+			composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
+			g2.setComposite(composite);
+		}
+
+		public void mousePressed(MouseEvent e)    //one of five methods in MouseListener
+		{
+			Tile tile = (Tile) e.getSource();
+			if (e.getButton() == MouseEvent.BUTTON1) {
+				remove( tile );
+				repaint();
+			}
+
+		}
+
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		public void mouseClicked(MouseEvent e) {
+		}
+
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		public void mouseExited(MouseEvent e) {
+		}
+	}
+
+	public static void main(String[] arg)
+	{
+		new Main();
+	}
+}

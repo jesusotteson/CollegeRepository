@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FEED THE DUCKS</title>
+		<link type="text/css" rel="stylesheet" href="css/FileStyle.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+		<script src="js/Script.js"></script>
+	</head>
+	<body onload="resetGame();" background="img/background-ducks.jpg">
+		<h2 id="display-message">Let's Guess a Number</h2>
+		<div id="display-image"><img src="img/start-duck.jpg"></div>
+		<form action="javascript:void(0);">
+			<input id="user-guess" type="text" placeholder="Duck Feed Guess?">
+			<input type="button" value="Submit Duck Feed" onclick="playGame();">
+			<input type="button" value="Feed more Ducks?" onclick="resetGame();">
+		</form>
+	</body>
+</html>

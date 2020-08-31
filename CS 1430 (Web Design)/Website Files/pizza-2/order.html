@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Pizza Co. | Order</title>
+    <link rel="stylesheet" type="text/css" href="css/FileStyleOrder.css">
+  </head>
+  <body background="img/All/BackGround.gif">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="order.html" class="Hometab">Order</a></li>
+    </ul>
+      <h1> Order Now</h1>
+    <form method="post" action="http://www.stonecoldprofessor.com/1430/pizza-form/order-process.php">
+      <h2> Toppings </h2>
+      <img src="img/Order/cheese pizza.jpg" width="500px">
+      <div class= "toppings">
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Pepperoni"> Pepperoni <br>
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Onions"> Onions <br>
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Pineapple"> Pineapple <br>
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Sausage"> Sausage <br>
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Mushrooms"> Mushrooms <br>
+        <input type="checkbox" name="toppings[]" class="Toppings" value:"Green peppers"> Green peppers <br>
+      </div>
+      <br><br><br>
+      <h2> Crusts </h2>
+      <div class="Crust">
+        <input type="radio" name="crust" class="Crust" value="Deep Dish">Deep Dish <br>
+        <input type="radio" name="crust" class="Crust" value="Flat Bread">Flat Bread <br>
+        <input type="radio" name="crust" class="Crust" value="Hand Tossed">Hand Tossed <br>
+        <input type="radio" name="crust" class="Crust" value="Gluten Free Pizza">Gluten Free Pizza <br>
+        <input type="radio" name="crust" class="Crust" value="Brooklyn Style Pizza">Cheese Stuffed <br>
+      </div>
+
+      <div class="Size">
+        <h3> Sizes </h3>
+        <select name="size">
+          <option value="">
+          <option value="Large">Large
+          <option value="Medium">Medium
+          <option value="Small">Small
+        </select>
+      </div>
+
+      <div class="info">
+        <h4> Delivery Information </h4>
+        <input type="text" name="first" placeholder="First Name">
+        <input type="text" name="last" placeholder="Last Name">
+        <input type="text" name="add1" placeholder="Address">
+        <input type="text" name="add2" placeholder="Address">
+        <input type="text" name="city" placeholder="City">
+        <input type="text" name="state" placeholder="State">
+        <input type="text" name="zip" placeholder="Zip">
+        <input type="text" name="phone" placeholder="Phone Number">
+        <input type="text" name="email" placeholder="Email">
+      </div>
+
+      <textarea name="comments" placeholder="Comments?"></textarea>
+
+      <br><br><br>
+      <input type="reset">
+      <input type="submit">
+    </form>
+  </body>
+</html>

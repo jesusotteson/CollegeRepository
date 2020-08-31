@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;kdTrees.PointST.java&apos; to &apos;PointSET.java&apos;&#x0D;&#x0A;- Original project: &apos;2420_Assignment Kd-Trees&apos;&#x0D;&#x0A;- Original element: &apos;kdTrees.PointST.java&apos;&#x0D;&#x0A;- Renamed element: &apos;kdTrees.PointSET.java&apos;" description="Rename compilation unit &apos;PointST.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;kdTrees{PointST.java" name="PointSET.java" references="false" stamp="1532630709087" version="1.0"/>
+</session>

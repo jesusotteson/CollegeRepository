@@ -1,0 +1,5 @@
+
+AVRASM ver. 2.2.7  c:\users\jp\Documents\Atmel Studio\7.0\ForLoopInteration\ForLoopInteration\main.asm Tue Feb 26 09:28:13 2019
+
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc'
+c:\users\jp\Documents\Atmel Studio\7.0\ForLoopInteration\ForLoopInteration\main.asm(20): error: syntax error, unexpected FUNCTION

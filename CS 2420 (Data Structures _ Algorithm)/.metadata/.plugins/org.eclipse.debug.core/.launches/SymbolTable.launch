@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/2420_SymbolTable/src/symbolTable/SymbolTable.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="symbolTable.SymbolTable"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="C:\Users\Jp\Documents\School\CSIS 2420 (Data Structures &amp; Algorithm)\2420_DepthFirstPaths\src\depthFirstPaths\paths.txt 2"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="2420_SymbolTable"/>
+</launchConfiguration>

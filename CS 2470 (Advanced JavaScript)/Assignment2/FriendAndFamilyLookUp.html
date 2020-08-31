@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Friends and Family</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            //view all people function
+            function loadDoc() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
+                        var text = "";
+                        var ltext = "";
+                        var rtext = "";
+                        for (var i = 0; i < jsonObj.people.length; i++) {
+                            text += jsonObj.people[i].name + "<br>";
+                            ltext += jsonObj.people[i].lname + "<br>";
+                            rtext += jsonObj.people[i].relation + "<br>";
+                        }
+                        document.getElementById("name").innerHTML = text;
+                        document.getElementById("last").innerHTML = ltext;
+                        document.getElementById("relation").innerHTML = rtext;
+                    }
+                };
+                xhttp.open("GET", "FriendsAndFamily.json", true);
+                xhttp.send();
+            }
+            ;
+            //search by name function
+            function typeFilter(str) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
+                        var text = "";
+                        var ltext = "";
+                        var rtext = "";
+                        if (str.length > 0) {
+                            for (var i = 0; i < jsonObj.people.length; i++) {
+                                if (jsonObj.people[i].name.indexOf(document.getElementById("search").value) > -1 ||
+                                        jsonObj.people[i].lname.indexOf(document.getElementById("search").value) > -1) {
+                                    text += jsonObj.people[i].name + "<br>";
+                                    ltext += jsonObj.people[i].lname + "<br>";
+                                    rtext += jsonObj.people[i].relation + "<br>";
+                                }
+                            }
+                            document.getElementById("name").innerHTML = text;
+                            document.getElementById("last").innerHTML = ltext;
+                            document.getElementById("relation").innerHTML = rtext;
+                        }
+                    }
+                };
+                xhttp.open("GET", "FriendsAndFamily.json", true);
+                xhttp.send();
+            }
+            ;
+            //function for filter by select tag
+            function selChange() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
+                        var text = "";
+                        var ltext = "";
+                        var rtext = "";
+                        for (var i = 0; i < jsonObj.people.length; i++) {
+                            if (jsonObj.people[i].relation == document.getElementById("sel").value) {
+                                text += jsonObj.people[i].name + "<br>";
+                                ltext += jsonObj.people[i].lname + "<br>";
+                                rtext += jsonObj.people[i].relation + "<br>";
+                            }
+                        }
+                        document.getElementById("name").innerHTML = text;
+                        document.getElementById("last").innerHTML = ltext;
+                        document.getElementById("relation").innerHTML = rtext;
+                    }
+                };
+                xhttp.open("GET", "FriendsAndFamily.json", true);
+                xhttp.send();
+            }
+            ;
+        </script>
+    </head>
+    <body>
+        <div>
+            <label>Search by Name:</label>
+            <input type="text" id="search" onkeyup="typeFilter(this.value)">
+            <select id="sel" onchange="selChange()"></select>
+            <input type="button" value="Show all People" onclick="loadDoc()">
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Relation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="name"></td>
+                        <td id="last"></td>
+                        <td id="relation"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonObj = JSON.parse(xhttp.responseText);
+                    var text = "<option value='0'>Select a relationship</option>";
+                    for (var i = 0; i < jsonObj.people.length; i++) {
+                                text += "<option value=" + jsonObj.people[i].relation + ">" + jsonObj.people[i].relation + "</option>";
+
+                    }
+                    document.getElementById("sel").innerHTML = text;
+                }
+            };
+            xhttp.open("GET", "FriendsAndFamily.json", true);
+            xhttp.send();
+        </script>
+    </body>
+</html>

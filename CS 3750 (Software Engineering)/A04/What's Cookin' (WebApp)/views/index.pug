@@ -1,0 +1,14 @@
+extends components/layout
+
+block content
+
+  include includes/filter
+  include ./includes/search
+  include ./includes/sort
+
+  each venue in venues
+    - var venue = venue.venue
+    a(href="/venues/" + venue.id)
+      .card.mb-2: .card-body
+        h4 #{venue.name}
+        p #{venue.location.address}

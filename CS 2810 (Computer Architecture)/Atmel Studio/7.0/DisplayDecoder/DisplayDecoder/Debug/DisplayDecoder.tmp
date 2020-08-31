@@ -1,0 +1,50 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\Debug\DisplayDecoder.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>DisplayDecoder.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>DisplayDecoder.map</FILE>
+  <FILE>DisplayDecoder.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>17</LINE></INIT>
+  <start><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>47</LINE></start>
+  <DELAY><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>233</LINE></DELAY>
+  <val_1><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>54</LINE></val_1>
+  <val_2><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>61</LINE></val_2>
+  <esc_1><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>134</LINE></esc_1>
+  <val_3><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>67</LINE></val_3>
+  <esc_2><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>145</LINE></esc_2>
+  <val_4><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>73</LINE></val_4>
+  <esc_3><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>156</LINE></esc_3>
+  <val_5><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>79</LINE></val_5>
+  <esc_4><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>167</LINE></esc_4>
+  <val_6><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>85</LINE></val_6>
+  <esc_5><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>178</LINE></esc_5>
+  <val_7><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>91</LINE></val_7>
+  <esc_6><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>189</LINE></esc_6>
+  <val_8><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>97</LINE></val_8>
+  <esc_7><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>200</LINE></esc_7>
+  <val_9><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>103</LINE></val_9>
+  <esc_8><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>211</LINE></esc_8>
+  <val_0><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>111</LINE></val_0>
+  <esc_9><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>222</LINE></esc_9>
+  <esc_0><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>123</LINE></esc_0>
+  <L1><FILE>c:\users\jp\Documents\Atmel Studio\7.0\DisplayDecoder\DisplayDecoder\main.asm</FILE><LINE>240</LINE></L1>
+ </LABELS>
+</ASSEMBLER_INFO>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;CharacterCreator.java&apos; to &apos;Fire Emblem Character Creator/src/FECC&apos;&#x0D;&#x0A;- Original project: &apos;Fire Emblem Character Creator&apos;&#x0D;&#x0A;- Destination element: &apos;Fire Emblem Character Creator/src/FECC&apos;&#x0D;&#x0A;- Original element: &apos;CharacterCreator.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;FECC" element1="/src&lt;{CharacterCreator.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1520447824599" units="1" version="1.0"/>
+</session>

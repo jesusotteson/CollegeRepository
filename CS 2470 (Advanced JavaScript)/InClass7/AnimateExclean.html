@@ -1,0 +1,134 @@
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JQuery Animation Examples</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>v
+        <script src="js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            $(document).ready(function () {
+                $('#Gallery a').click(function (evt) {
+                    evt.preventDefault();
+                    var img = $(this).attr('href');
+                    var oldImage = $('#ship img');
+                    var image = $('<img src="'+img+'" width="700" height="650">');
+                    image.hide();
+                    $('#ship').prepend(image);
+                    image.fadeIn(2000);
+                    oldImage.fadeOut(2000, function(){
+                        $(this).remove();
+
+                     });
+                }); // end click on ship
+                $('#gallery a:first').click();
+                $('#Gallery img').each(function () {
+                    var imgFile = $(this).attr('src');
+                    var preloadImage = new Image();
+                    var imgExt = /(\.\w{3,4}$)/;
+                    preloadImage.src = imgFile.replace(imgExt, '_p$1');
+                    $(this).hover(
+                            function(){
+                                $(this).attr('src', preloadImage.src);
+                            },
+                            function(){
+                                $(this).attr('src', imgFile);
+                            }
+                            ); // end hover over image
+                        }); // end each for roll over
+                $("#flip").click(function () {
+                  $('#panel').slideToggle("slow");
+                });
+            });
+        </script>
+
+        <style>
+            #panel, #flip {
+                padding: 5px;
+                text-align: center;
+                background-color: #e5eecc;
+                border: solid 1px #c3c3c3;
+            }
+            #panel {
+                padding: 50px;
+                display: none;
+            }
+            #ship{
+                height: 100px;
+                width: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="flip">Click here to log in</div>
+        <div id="panel">
+            <form name="form1" method="post" action="#">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+
+                    <tr>
+                        <td colspan="3"><strong>Member Login </strong></td>
+
+                    </tr>
+                    <tr>
+                        <td width="78">Username</td>
+                        <td width="6">:</td>
+                        <td width="294"><input name="myusername" type="text" id="myusername"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>:</td>
+                        <td><input name="mypassword" type="password" id="mypassword">
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="Submit" value="Login"></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <a href="#">Create an Account</a>
+
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div >
+            <h1>Rollover Images</h1>
+            <p>Mouse over the images below</p>
+            <div id="Gallery">
+                <a href="images/tie.jpg">
+                    <img src="images/tie.jpg" width="140" height="140" alt="Tie">
+                </a>
+                <a href="images/vader.jpg">
+                    <img src="images/vader.jpg" width="140" height="140" alt="Tie">
+                </a>
+                <a href="images/millenniumfalcon.jpg">
+                    <img src="images/millenniumfalcon.jpg" width="140" height="140" alt="Tie">
+                </a>
+                <a href="images/xwing.jpg">
+                    <img src="images/xwing.jpg" width="140" height="140" alt="Tie">
+                </a>
+            </div>
+            <div id="ship">
+
+            </div>
+
+        </div>
+    </body>
+</html>

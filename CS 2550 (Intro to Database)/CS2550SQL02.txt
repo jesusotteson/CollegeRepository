@@ -1,0 +1,87 @@
+Computer Science 2550
+SQL 2
+Jesus Otteson
+
+1.
+Select first_name || ' ' || last_name AS Student_Name, PHONE
+From STUDENT
+Where (EMPLOYER like 'Board Utilities')
+Order By last_name;
+
+2.
+Select EMPLOYER
+From STUDENT
+Where (EMPLOYER like '%Systems%')
+GROUP BY EMPLOYER
+Order By EMPLOYER;
+
+3.
+Select UPPER(LAST_NAME) || ', ' || 
+       UPPER(substr(first_name, 1, 1) || '.' ) 
+       AS Student_Name, PHONE
+From STUDENT
+Where (PHONE like '%212%')
+Order By LAST_NAME;
+
+4.
+Select FIRST_NAME || ' ' || LAST_NAME As Student, STREET_ADDRESS, ZIP
+From STUDENT
+Where PHONE IS NULL;
+
+5.
+Select ZIP
+From ZIPCODE
+Where (CITY like '%Jersey City%')
+Order By ZIP;
+
+6.
+Select COURSE_NO, LOCATION
+From SECTION
+Where (LOCATION like '%M%')
+Order By COURSE_NO;
+
+7.
+Select 
+       CASE WHEN STATE = 'GA' THEN 'Georgia'
+            WHEN STATE = 'FL' THEN 'Florida'
+            WHEN STATE = 'MA' THEN 'Massachusetts'
+            ELSE STATE
+       END "State Name", STATE, CITY
+
+From ZIPCODE
+
+Where STATE IN ('GA','FL','MA')
+
+Order By City;
+
+8.
+Select SALUTATION || '. ' || FIRST_NAME || ' ' || LAST_NAME || ' ' || STREET_ADDRESS || ' ' || ZIP As "Instructor Address"
+
+From INSTRUCTOR
+
+Where (ZIP = '10025')
+
+Order By FIRST_NAME;
+
+
+9.
+Select STUDENT_ID, GRADE_TYPE_CODE, NUMERIC_GRADE
+
+From GRADE
+
+Where (GRADE_TYPE_CODE = 'FI') AND (SECTION_ID = 87) 
+
+Order By NUMERIC_GRADE DESC;
+
+
+10.
+Select STUDENT_ID, NUMERIC_GRADE,
+    CASE WHEN NUMERIC_GRADE > 85 OR NUMERIC_GRADE = 85 THEN 'PASS'
+         WHEN NUMERIC_GRADE < 85 THEN 'FAIL'
+    END "RESULTS"     
+    
+From GRADE
+
+Where (SECTION_ID = 103) AND (GRADE_TYPE_CODE = 'FI')
+
+Order By STUDENT_ID;

@@ -1,0 +1,8 @@
+package mainPackage;
+
+public class helloworld {
+	public static void main (String[] args) {
+	System.out.println("Jimmy Eat World" + " "
+			+ "Jimmy is also fat");
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 elements to &apos;AssignmentInterface/src.shapes&apos;&#x0D;&#x0A;- Original project: &apos;Shapes&apos;&#x0D;&#x0A;- Destination element: &apos;AssignmentInterface/src.shapes&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     shapes.InheritanceApp.java&#x0D;&#x0A;     shapes.Circle.java&#x0D;&#x0A;     shapes.Rectangle.java&#x0D;&#x0A;     shapes.IsoscelesRightTriangle.java&#x0D;&#x0A;     shapes.Square.java" description="Copy compilation units" destination="=AssignmentInterface/&lt;src.shapes" element1="/src&lt;shapes{InheritanceApp.java" element2="/src&lt;shapes{Circle.java" element3="/src&lt;shapes{Rectangle.java" element4="/src&lt;shapes{IsoscelesRightTriangle.java" element5="/src&lt;shapes{Square.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1519622499096" units="5" version="1.0"/>
+</session>

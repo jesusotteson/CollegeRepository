@@ -1,0 +1,64 @@
+Computer Science 2550
+SQL 6
+Jesus Otteson
+
+1.
+SELECT student_id
+FROM enrollment e join section s on e.section_id = s.section_id
+WHERE course_no between 100 and 199
+GROUP BY student_id having count(*) =(select max(numbersections)
+FROM (select student_id, count(*) as numbersections
+FROM enrollment e join section s on e.section_id = s.section_id
+WHERE course_no between 100 and 199
+GROUP BY student_id));
+
+2.
+SELECT student_id, last_name, first_name
+FROM student s 
+    JOIN enrollment e on s.student_id = e.student_id 
+    JOIN grade g on e.section_id = g.section_id 
+    AND e.student_id = g.student_id 
+    JOIN section sec ON sec.section_id = e.section_id
+WHERE sec.course_no = 230 
+    AND sec.section_id = 100 
+    AND g.grade_type_code = 'FI'
+    AND numeric_grade = (select max(numeric_grade) 
+FROM(select first_name, last_name, numeric_grade
+FROM student s join enrollment e ON s.student_id = e.student_id
+    JOIN grade g ON e.section_id = g.section_id
+    AND e.student_id = g.student_id
+    JOIN section sec on sec.section_id = e.section_id
+WHERE sec.course_no = 230 
+    AND sec.section_id = 100
+    AND g.grade_type_code = 'FI'));
+
+3.
+SELECT salutation, first_name , last_name, zip
+FROM instructor 
+WHERE instructor_id NOT IN (SELECT DISTINCT instructor_id FROM section);
+
+4.Generate an alphabetic listing containing the last names and final exam grade (FI) of students who scored above average on the final exam for section 154.
+
+SELECT S.last_name, G.Numeric_grade
+FROM Grade G, Student S,Enrollment E
+WHERE E.Final_Grade >='85' 
+	AND G.section_ID = '154'
+	AND g.grade_type_code = 'FI'
+Order By Last_Name;
+
+
+5.List the course number and course description of the course with the highest number of enrolled students.
+Arrange the list on course number.
+
+6.List course number and course description for all courses that have at least one 10:30AM section.  
+Sort by course number.
+
+7.List the student_id and last name of the students who received a below average grade on the third quiz in section 135.
+Sort on Last Name.
+
+8.Provide an alphabetic list containing the full names and phone numbers of students who have taken both the Systems Analysis class and the Project Management class.
+
+9.List the instructor name, course number and course description of the Java courses that have been taught by the Instructor that has taught the most Java courses. 
+Sort on instructor name and course description.
+
+10.(Optional Extra Credit Query ) List the student id, last name and the calculated (weighted) final grade for students in section 143. Arrange the list on student id.

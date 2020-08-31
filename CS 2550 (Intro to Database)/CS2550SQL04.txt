@@ -1,0 +1,63 @@
+Computer Science 2550
+SQL 4
+Jesus Otteson
+
+1.
+SELECT ROUND(AVG(COST),2) AS "AverageCost"
+FROM COURSE;
+
+2.
+SELECT COUNT(*) AS "February_Registrations"
+FROM STUDENT
+WHERE REGISTRATION_DATE >= '01 JAN 2007' AND registration_date <= '31 JAN 2007';
+
+3.
+SELECT AVG(NUMERIC_GRADE)AS AVERAGE, MAX(NUMERIC_GRADE)AS HIGHEST, MIN(NUMERIC_GRADE)AS LOWEST
+FROM GRADE
+WHERE SECTION_ID LIKE '152' AND GRADE_TYPE_CODE LIKE 'FI';
+
+4.
+SELECT CITY, STATE, COUNT(*) AS ZIPCODES
+FROM ZIPCODE
+GROUP BY STATE,CITY HAVING COUNT (ZIP) >3
+ORDER BY STATE,CITY;
+
+5.
+SELECT SECTION_ID,COUNT(*) AS ENROLLED
+FROM ENROLLMENT
+WHERE ENROLL_DATE >= '21 FEB 2007' GROUP BY SECTION_ID
+ORDER BY COUNT(STUDENT_ID)DESC;
+
+6.
+SELECT STUDENT_ID, SECTION_ID, TO_CHAR(AVG(NUMERIC_GRADE),'99.9999') AS AVERAGE_GRADE
+FROM GRADE
+WHERE SECTION_ID = '86'
+GROUP BY STUDENT_ID, SECTION_ID
+ORDER BY STUDENT_ID;
+
+7.
+SELECT student_id, COUNT(section_id) As Sections
+FROM enrollment
+GROUP BY student_id
+HAVING student_id = 250;
+
+8.
+SELECT section_id, MIN(numeric_grade) AS LOWSCORE
+FROM grade
+GROUP BY section_id, grade_type_code
+HAVING grade_type_code = 'QZ' AND MIN(numeric_grade) > 79
+ORDER BY section_id;
+
+9.
+SELECT employer, COUNT(student_id) As Student_Employees
+FROM student
+GROUP BY employer
+HAVING COUNT(student_id) > 5
+ORDER BY Student_Employees;
+
+10.
+SELECT section_id, COUNT(numeric_grade) AS Participation_Grade, MIN(numeric_grade) AS Lowest_Grade
+FROM grade
+GROUP BY section_id, grade_type_code
+HAVING grade_type_code = 'PA' AND COUNT(grade_type_code) > 15
+ORDER BY section_id;

@@ -1,0 +1,76 @@
+CS2550SQL8
+Jesus Otteson
+
+
+1.List the student ID and name of the student that has enrolled the most times.  
+Arrange the list in alphabetical order.
+
+SELECT e.student_ID, stud.first_name, stud.last_name
+FROM enrollment e, section s, student stud
+WHERE e.section_id = s.section_id
+    AND e.student_id = stud.student_id
+GROUP BY e.student_id, stud.first_name, stud.last_name
+HAVING COUNT(*)=(SELECT MAX(COUNT(*))
+                 FROM enrollment
+                 GROUP BY student_id)
+ORDER BY stud.last_name, stud.first_name;
+
+2.List the names and phone numbers of instructors who teach students that live in same zipcode as the instructor.
+
+SELECT i.first_name, i.last_name, i.phone
+FROM student stud, enrollment e, section sec,instructor i
+WHERE stud.student_id = e.student_id
+    AND e.section_id = sec.section_id
+    AND sec.instructor_id = i.instructor_id
+    AND stud.zip = i.zip
+ORDER BY i.last_name;
+
+3.Provide a list of names and cities of students and instructors that live in zipcode 10025. 
+Identify each person's role as either "Student" or "Instructor". 
+Sort the list by role, last name and first name.
+
+SELECT first_name, last_name, z.city, 'Instructor' "Type"
+FROM instructor i, zipcode z
+WHERE i.zip = z.zip
+    AND i.zip = 10025
+UNION ALL
+
+SELECT first_name, last_name, z.city, 'Student' "Type"
+FROM student s, zipcode z
+WHERE s.zip = z.zip
+    AND s.zip = 10025
+ORDER BY "Type", last_name, first_name;
+
+4.Create a query that lists location, number of sections taught in that location and number of students enrolled in courses at that location. 
+Sort by location.
+
+SELECT location, sum(sections) AS sections, sum(students) as students
+FROM( SELECT location, 0 AS sections, COUNT (*) AS students
+      FROM Student st, enrollment e, section se
+      WHERE st.student_id = e.student_id
+        AND e.section_id = se.section_id
+      GROUP BY location, 0
+      UNION ALL
+    SELECT location, COUNT (*) AS sections, 0 AS students
+    FROM section
+    GROUP BY LOCATION, 0)
+GROUP BY location
+ORDER BY location;
+
+5.Create a query that shows all of the individual grades for student 112 in section 95 and also the average of those grades. 
+The individual grades should come first with the average at the bottom. 
+List the grade type code and numeric grade. 
+The average row should have a caption of, "Average for student 112". 
+
+SELECT grade_type_code, TO_CHAR((numeric_grade),99.99) AS grade
+FROM grade
+WHERE section_id = 95
+    AND student_id = 112
+UNION ALL
+SELECT 'Average for student 112' AS grade_type_code, TO_CHAR((AVG(grade)),99.99) AS grade
+FROM (SELECT AVG(numeric_grade) as grade
+      FROM grade
+      WHERE section_id = 95
+        AND student_id = 112
+      GROUP BY 'Average for student 112')
+ORDER BY grade_type_code DESC;     
